@@ -113,7 +113,7 @@ Class Dude_Facebook_Feed {
 		$response = wp_remote_get( 'https://graph.facebook.com/'.$fbid.'/feed/?'.$parameters );
 
 		if( $response['response']['code'] !== 200 ) {
-			self::_write_log( 'response status code not 200 OK, fbid: '.$fbidid );
+			self::_write_log( 'response status code not 200 OK, fbid: '.$fbid );
 			return false;
 		}
 
