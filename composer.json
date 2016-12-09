@@ -1,0 +1,16 @@
+{
+  "name": "digitoimistodude/dude-facebook-feed",
+  "type": "wordpress-plugin",
+  "description": "Dude Facebook feed",
+  "homepage": "https://github.com/digitoimistodude/dude-facebook-feed",
+  "keywords": ["wordpress", "plugin"],
+  "license": "GNU GPL 2 or later",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Timi Wahalahti",
+      "email": "timi@dude.fi",
+      "homepage": "https://www.dude.fi"
+    }
+  ]
+}
