@@ -32,7 +32,7 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
 ### Hooks
 All the settings are set with filters, and there is also few filters to change basic functionality and manipulate data before caching.
 
-#### `dude-facebook-feed/access_token`
+#### `ude-facebook-feed/parameters/access_token`
 You need most likely global access token to get posts from page, it's App ID and secret separated with |. If you are fetching posts from profile, please provide user access token generated with [Graph API Explorer](https://developers.facebook.com/tools/explorer/).
 
 Defaults to empty string.
