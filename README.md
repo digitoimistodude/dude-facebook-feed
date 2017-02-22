@@ -9,10 +9,12 @@ Handcrafted with love at [Digitoimisto Dude Oy](http://dude.fi), a Finnish bouti
 1. [Please note before using](#please-note-before-using)
 2. [License](#license)
 3. [Usage](#usage)
-  1. [Hooks](#hooks)
-  2. [Default call parameters](#default-call-parameters)
-4. [Composer](#composer)
-5. [Contributing](#contributing)
+  1. [Usage example for displaying a Facebook page feed](#usage-example-for-displaying-a-facebook-page-feed)
+  2. [Limiting feed items](#limiting-feed-items)
+4. [Hooks](#hooks)
+5. [Default call parameters](#default-call-parameters)
+6. [Composer](#composer)
+7. [Contributing](#contributing)
 
 ## Please note before using
 This plugin is not meant to be "plugin for everyone", it needs at least some basic knowledge about php and css to add it to your site and making it look beautiful.
@@ -29,7 +31,7 @@ Only mandatory filter to use is `dude-facebook-feed/parameters/access_token`.
 
 Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook id as a only argument. It id can be obtained with [this tool](http://findmyfbid.com/).
 
-#### Usage example for displaying a Facebook page feed
+### Usage example for displaying a Facebook page feed
 
 1. Go to [developers.facebook.com](https://developers.facebook.com/) and create app for your WordPress site
 2. Generate access token by going [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/). Select your app in **Application:** dropdown, select **Get Token** and **Get App Token**
@@ -65,7 +67,19 @@ endforeach;
 ?>      
 ````
 
-### Hooks
+### Limiting feed items
+
+````
+<?php
+// Limit feed to 6 items
+add_filter('dude-facebook-feed/api_call_parameters', 'yourtexdomain_fb_limit' );
+function yourtexdomain_fb_limit( $parameters ) {
+  $parameters['limit'] = 6;
+  return $parameters;
+}
+````
+
+## Hooks
 All the settings are set with filters, and there is also few filters to change basic functionality and manipulate data before caching.
 
 #### `dude-facebook-feed/parameters/access_token`
@@ -91,7 +105,7 @@ Change posts cache lifetime. Only passed argument is default lifetime in seconds
 
 Defaults to 600 (= ten minutes).
 
-### Default call parameters
+## Default call parameters
 
 Default parameters are below, those can be changed with filters named `dude-facebook-feed/parameters/<PARAMETER>`.
 
