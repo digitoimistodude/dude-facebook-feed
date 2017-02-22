@@ -25,14 +25,14 @@ Dude Facebook feed is released under the GNU GPL 2 or later.
 ## Usage
 This plugin does not have settings page or provide anything visible on front-end. So it's basically dumb plugin if you don't use any filters listed below.
 
-Only mandatory filter to use is `dude-facebook-feed/access_token`.
+Only mandatory filter to use is `dude-facebook-feed/parameters/access_token`.
 
 Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook id as a only argument. It id can be obtained with [this tool](http://findmyfbid.com/).
 
 ### Hooks
 All the settings are set with filters, and there is also few filters to change basic functionality and manipulate data before caching.
 
-#### `ude-facebook-feed/parameters/access_token`
+#### `dude-facebook-feed/parameters/access_token`
 You need most likely global access token to get posts from page, it's App ID and secret separated with |. If you are fetching posts from profile, please provide user access token generated with [Graph API Explorer](https://developers.facebook.com/tools/explorer/).
 
 Defaults to empty string.
