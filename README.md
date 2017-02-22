@@ -11,6 +11,7 @@ Handcrafted with love at [Digitoimisto Dude Oy](http://dude.fi), a Finnish bouti
 3. [Usage](#usage)
   1. [Usage example for displaying a Facebook page feed](#usage-example-for-displaying-a-facebook-page-feed)
   2. [Limiting feed items](#limiting-feed-items)
+  3. [Add support for likes field](#add-support-for-likes-field)
 4. [Hooks](#hooks)
 5. [Default call parameters](#default-call-parameters)
 6. [Composer](#composer)
@@ -75,6 +76,18 @@ endforeach;
 add_filter('dude-facebook-feed/api_call_parameters', 'yourtexdomain_fb_limit' );
 function yourtexdomain_fb_limit( $parameters ) {
   $parameters['limit'] = 6;
+  return $parameters;
+}
+```
+
+### Add support for likes field
+
+```php
+// Add likes support
+add_filter('dude-facebook-feed/parameters/fields', 'yourtexdomain_fb_likes' );
+function yourtexdomain_fb_likes( $parameters ) {
+  $parameters[] = 'likes';
+
   return $parameters;
 }
 ```
