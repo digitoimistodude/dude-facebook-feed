@@ -29,6 +29,42 @@ Only mandatory filter to use is `dude-facebook-feed/parameters/access_token`.
 
 Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook id as a only argument. It id can be obtained with [this tool](http://findmyfbid.com/).
 
+#### Usage example for displaying a Facebook page feed
+
+1. Go to [developers.facebook.com](https://developers.facebook.com/) and create app for your WordPress site
+2. Generate access token by going [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/). Select your app in **Application:** dropdown, select **Get Token** and **Get App Token**
+3. Copy **Access Token** and create filter that returns access token to your **functions.php** (remember to change prefix *yourtexdomain* to your app/site name):
+
+````
+<?php
+/**
+ * Facebook feed
+ */
+ add_filter('dude-facebook-feed/parameters/access_token', 'yourtexdomain_fb_access_token' );
+ function yourtexdomain_fb_access_token() {
+    return 'appid|appsecret';
+ }
+````
+
+4. Get your Facebook page numeric ID from [findmyfbid.com](http://findmyfbid.com/). Go to the page you want your Facebook feed to be displayed, for example **front-page.php** and loop the feed and do stuff (it's always good idea to `var_dump` the data to see what's there to use:
+
+````
+<?php
+$feed = dude_facebook_feed()->get_posts( '569702083062696' );
+
+foreach ( $feed['data'] as $item ) :
+
+  if ( $item['story'] ) :
+    $message = $item['story'];
+  else :
+    $message = $item['message'];
+  endif;
+
+  echo $message;
+endforeach;
+?>      
+````
+
 ### Hooks
 All the settings are set with filters, and there is also few filters to change basic functionality and manipulate data before caching.
 
