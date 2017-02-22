@@ -52,7 +52,6 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
 4. Get your Facebook page numeric ID from [findmyfbid.com](http://findmyfbid.com/). Go to the page you want your Facebook feed to be displayed, for example **front-page.php** and loop the feed and do stuff (it's always good idea to `var_dump` the data to see what's there to use:
 
 ```php
-<?php
 $feed = dude_facebook_feed()->get_posts( '569702083062696' );
 
 foreach ( $feed['data'] as $item ) :
@@ -71,7 +70,6 @@ endforeach;
 ### Limiting feed items
 
 ```php
-<?php
 // Limit feed to 6 items
 add_filter('dude-facebook-feed/api_call_parameters', 'yourtexdomain_fb_limit' );
 function yourtexdomain_fb_limit( $parameters ) {
