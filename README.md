@@ -37,7 +37,7 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
 2. Generate access token by going [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/). Select your app in **Application:** dropdown, select **Get Token** and **Get App Token**
 3. Copy **Access Token** and create filter that returns access token to your **functions.php** (remember to change prefix *yourtexdomain* to your app/site name):
 
-````
+```php
 <?php
 /**
  * Facebook feed
@@ -46,11 +46,11 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
  function yourtexdomain_fb_access_token() {
     return 'appid|appsecret';
  }
-````
+```
 
 4. Get your Facebook page numeric ID from [findmyfbid.com](http://findmyfbid.com/). Go to the page you want your Facebook feed to be displayed, for example **front-page.php** and loop the feed and do stuff (it's always good idea to `var_dump` the data to see what's there to use:
 
-````
+```php
 <?php
 $feed = dude_facebook_feed()->get_posts( '569702083062696' );
 
@@ -65,11 +65,11 @@ foreach ( $feed['data'] as $item ) :
   echo $message;
 endforeach;
 ?>      
-````
+```
 
 ### Limiting feed items
 
-````
+```php
 <?php
 // Limit feed to 6 items
 add_filter('dude-facebook-feed/api_call_parameters', 'yourtexdomain_fb_limit' );
@@ -77,7 +77,7 @@ function yourtexdomain_fb_limit( $parameters ) {
   $parameters['limit'] = 6;
   return $parameters;
 }
-````
+```
 
 ## Hooks
 All the settings are set with filters, and there is also few filters to change basic functionality and manipulate data before caching.
