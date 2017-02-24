@@ -64,7 +64,6 @@ foreach ( $feed['data'] as $item ) :
 
   echo $message;
 endforeach;
-?>      
 ```
 
 ### Limiting feed items
