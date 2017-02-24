@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Dude Facebook feed
- * Plugin URL: https://www.dude.fi
+ * Plugin URI: https://github.com/digitoimistodude/dude-facebook-feed
  * Description: Fetches the latest posts from Facebook profile or page
  * Version: 0.1.0
- * Author: Timi Wahalahti / DUDE
- * Author URL: http://dude.fi
+ * Author: Digitoimisto Dude Oy, Timi Wahalahti
+ * Author URI: https://www.dude.fi
  * Requires at least: 4.4.2
- * Tested up to: 4.4.2
+ * Tested up to: 4.7.2
  *
  * Text Domain: dude-facebook-feed
  * Domain Path: /languages
