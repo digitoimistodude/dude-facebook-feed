@@ -35,7 +35,24 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
 ### Usage example for displaying a Facebook page feed
 
 1. Go to [developers.facebook.com](https://developers.facebook.com/) and create app for your WordPress site
-2. Generate access token by going [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/). Select your app in **Application:** dropdown, select **Get Token** and **Get App Token**
+2. Generate access token by going [Facebook Graph API Explorer](https://developers.facebook.com/tools/explorer/).
+
+Here comes a tricky part. Facebook let's apps access any pages if the app was made before May 1st, 2018.
+
+**My app was created before May 1st, 2018:**
+
+Select your app in **Application:** dropdown, select **Get Token** and **Get App Token**. Your access_token will look like `appid|appsecret`.
+
+**My app was created after May 1st, 2018:**
+
+You need to be *administrator* in the page that you want to access. You can no longer get access token to any page but if you are the administrator, you don't need to send your app to review. Only if you need to access to any public page will you need to go through the app review process.
+
+Select your app in **Application:** dropdown, select **Get Token** and **Get User Token**. Grant pretty much all privileges.
+
+Select **Get Token** again and select correct page from **Page Access Token**. After that, copy the long "Access token" shown (can be over 200 characters). This is your access_token.
+
+Notice that this access_token will only grant you permission to that page. For every page, you must create separate access_token.
+
 3. Copy **Access Token** and create filter that returns access token to your **functions.php** (remember to change prefix *yourtexdomain* to your app/site name):
 
 ```php
@@ -45,7 +62,7 @@ Get posts by calling function `dude_facebook_feed()->get_posts()`, pass Facebook
  */
  add_filter('dude-facebook-feed/parameters/access_token', 'yourtexdomain_fb_access_token' );
  function yourtexdomain_fb_access_token() {
-    return 'appid|appsecret';
+    return 'very_long_access_token_from_fb'; // legacy access_token: 'appid|appsecret'
  }
 ```
 
