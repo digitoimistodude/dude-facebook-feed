@@ -93,8 +93,10 @@ Class Dude_Facebook_Feed {
 		);
 
 		$response = self::_call_api( $fbid, apply_filters( 'dude-facebook-feed/api_call_parameters', $parameters ) );
-		if( $response === FALSE )
+		if( $response === FALSE ) {
+      			set_transient( $transient_name, $response, apply_filters( 'dude-facebook-feed/posts_transient_lifetime', '600' ) / 2 );
 			return;
+    		}
 
 		$response = json_decode( $response['body'], true );
 
