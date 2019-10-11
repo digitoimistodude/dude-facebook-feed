@@ -3,7 +3,7 @@
  * Plugin Name: Dude Facebook feed
  * Plugin URI: https://github.com/digitoimistodude/dude-facebook-feed
  * Description: Fetches the latest posts from Facebook profile or page.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Digitoimisto Dude Oy, Timi Wahalahti
  * Author URI: https://www.dude.fi
  * Requires at least: 4.4.2
@@ -102,8 +102,8 @@ Class Dude_Facebook_Feed {
 
 		    // FB graph API 2.x => 3.3 backwards comp
 		    foreach ( $response as $key => $val ) {
-		      $response[ $key ]['type'] = $val['status_type'];
-		      $response[ $key ]['link'] = $val['permalink_url'];
+		     	$response['data'][ $key ]['type'] = $val['status_type'];
+      			$response['data'][ $key ]['link'] = $val['permalink_url'];
 		    }
 
 		$response = apply_filters( 'dude-facebook-feed/posts', $response );
