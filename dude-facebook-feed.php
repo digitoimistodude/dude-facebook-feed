@@ -3,11 +3,11 @@
  * Plugin Name: Dude Facebook feed
  * Plugin URI: https://github.com/digitoimistodude/dude-facebook-feed
  * Description: Fetches the latest posts from Facebook profile or page.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Digitoimisto Dude Oy, Timi Wahalahti
  * Author URI: https://www.dude.fi
  * Requires at least: 4.4.2
- * Tested up to: 4.7.2
+ * Tested up to: 5.2
  *
  * Text Domain: dude-facebook-feed
  * Domain Path: /languages
