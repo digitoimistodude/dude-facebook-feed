@@ -89,14 +89,22 @@ Class Dude_Facebook_Feed {
       'locale'        => apply_filters( 'dude-facebook-feed/parameters/locale', 'fi_FI' ),
       'since'         => apply_filters( 'dude-facebook-feed/parameters/since', date('Y-m-d', strtotime( '-1 year' ) ) ),
       'limit'					=> apply_filters( 'dude-facebook-feed/parameters/limit', '10' ),
-      'fields'        => implode( ',', apply_filters( 'dude-facebook-feed/parameters/fields', array( 'id', 'created_time', 'type', 'message', 'story', 'full_picture', 'link' ) ) ),
+      'fields'        => implode( ',', apply_filters( 'dude-facebook-feed/parameters/fields', array( 'id', 'created_time', 'type', 'message', 'story', 'full_picture', 'link', 'permalink_url', 'status_type' ) ) ),
 		);
 
 		$response = self::_call_api( $fbid, apply_filters( 'dude-facebook-feed/api_call_parameters', $parameters ) );
 		if( $response === FALSE )
 			return;
 
-		$response = apply_filters( 'dude-facebook-feed/posts', json_decode( $response['body'], true ) );
+		$response = json_decode( $response['body'], true );
+
+		    // FB graph API 2.x => 3.3 backwards comp
+		    foreach ( $response as $key => $val ) {
+		      $response[ $key ]['type'] = $val['status_type'];
+		      $response[ $key ]['link'] = $val['permalink_url'];
+		    }
+
+		$response = apply_filters( 'dude-facebook-feed/posts', $response );
 		set_transient( $transient_name, $response, apply_filters( 'dude-facebook-feed/posts_transient_lifetime', '600' ) );
 
 		return $response;
