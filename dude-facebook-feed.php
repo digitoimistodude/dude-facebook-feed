@@ -100,11 +100,13 @@ Class Dude_Facebook_Feed {
 
 		$response = json_decode( $response['body'], true );
 
-		    // FB graph API 2.x => 3.3 backwards comp
+		// FB graph API 2.x => 3.3 backwards comp
+		if ( isset( $val['status_type'] ) && isset( $val['permalink_url'] ) ) {
 		    foreach ( $response as $key => $val ) {
 		     	$response['data'][ $key ]['type'] = $val['status_type'];
       			$response['data'][ $key ]['link'] = $val['permalink_url'];
 		    }
+		}
 
 		$response = apply_filters( 'dude-facebook-feed/posts', $response );
 		set_transient( $transient_name, $response, apply_filters( 'dude-facebook-feed/posts_transient_lifetime', '600' ) );
