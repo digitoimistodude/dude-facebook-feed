@@ -1,3 +1,6 @@
+| :bangbang: | **This repository is no longer actively maintained. The plugin still works, but does not receive any further updates other than community contributed fixes.**  |
+|:------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 # Dude Facebook feed
 WordPress plugin to get latest latest posts from Facebook profile or page.
 
